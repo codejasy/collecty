@@ -4,7 +4,7 @@ This is an amazing library that allows you to create collections and iterate ove
 
 ## instalation
 
-`npm install @codejasy/collecty`
+`npm install @ellescript/collecty`
 
 ## basic usge
 
@@ -34,17 +34,17 @@ import the Collection
 
 If you are using ECMAScript Modules:
 ```js
-import { Collection } from 'collecty';
+import { Collection } from '@ellescript/collecty';
 ```
 
 If you are using CommonJS:
 ```js
-const Collection = require('collecty').Collection;
+const Collection = require('@ellescript/collecty').Collection;
 ```
 
 If you are using the web browser:
 ```html
-<script src="https://unpkg.com/collecty@latest/dist/umd/index.umd.cjs"></script>
+<script src="https://unpkg.com/@ellescript/collecty/dist/umd/index.umd.cjs"></script>
 <script>
 
     const Collection = Collecty.Collection

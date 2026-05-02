@@ -1,6 +1,6 @@
 {
-  "name": "@codejasy/collecty",
-  "version": "5.10.1",
+  "name": "@ellescript/collecty",
+  "version": "0.0.1",
   "description": "allows iterating an array of elements with an easy-to-read syntax and gives functionality to the collection and the elements it iterates.",
   "main": "./dist/umd/index.umd.cjs",
   "types": "./dist/types/index.d.ts",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codejasy/collecty.git"
+    "url": "git+https://github.com/ellescript/collecty.git"
   },
   "author": "Cristian Emanuelle Guzmán Suárez",
   "license": "ISC",
