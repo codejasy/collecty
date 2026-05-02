@@ -1,6 +1,6 @@
 {
-  "name": "collecty",
-  "version": "5.10.0",
+  "name": "@codejasy/collecty",
+  "version": "5.10.1",
   "description": "allows iterating an array of elements with an easy-to-read syntax and gives functionality to the collection and the elements it iterates.",
   "main": "./dist/umd/index.umd.cjs",
   "types": "./dist/types/index.d.ts",
@@ -20,9 +20,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CrisGuzmanS/packages.javascript.collecty"
+    "url": "git+https://github.com/codejasy/collecty.git"
   },
-  "author": "Cristian Guzmán",
+  "author": "Cristian Emanuelle Guzmán Suárez",
   "license": "ISC",
   "devDependencies": {
     "@types/is-empty": "^1.2.3",

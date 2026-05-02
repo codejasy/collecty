@@ -4,7 +4,7 @@ This is an amazing library that allows you to create collections and iterate ove
 
 ## instalation
 
-`npm install collecty`
+`npm install @codejasy/collecty`
 
 ## basic usge
 
