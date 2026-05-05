@@ -65,6 +65,12 @@ export default class Collection extends Iterable {
     return this.toArray().length;
   }
 
+  public diff(array: any[]) {
+    return this.filter((item: any) => {
+      return array.indexOf(item) === -1
+    });
+  }
+
   /**
    * returns a new `collection` with the `items` that match with the callback given
    *
