@@ -5,6 +5,7 @@ export default class Collection extends Iterable {
 
   set(array: any[]) {
     Array.isArray(this.iterable) ? (this.iterable = array) : (this.iterable.items = array);
+    return this;
   }
 
   /**
@@ -30,8 +31,9 @@ export default class Collection extends Iterable {
    * > [1, 2, 3, 4, 5, 6]
    * ```
    */
-  public concat(array: any[]): void {
+  public concat(array: any[]): Collection {
     this.set(this.toArray().concat(array))
+    return this;
   }
 
   /**
