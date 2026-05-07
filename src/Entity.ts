@@ -6,7 +6,6 @@ class Entity<T> {
 
         return new Proxy(this, {
             get(target: any, property: PropertyKey) {
-
                 // Propiedades propias de la clase
                 if (property in target) {
                     return target[property];
@@ -18,14 +17,14 @@ class Entity<T> {
                 }
 
                 return null;
-            }
+            },
         });
     }
 
     isEmpty(): boolean {
         if (this.object === null) return true;
 
-        if (typeof this.object === "object") {
+        if (typeof this.object === 'object') {
             return Object.keys(this.object as any).length === 0;
         }
 

@@ -215,7 +215,7 @@ test('test "where" method', () => {
 
     expect(person3).toBe(null)
 
-    const person4 = persons.where( (person) => {
+    const person4 = persons.where((person) => {
         return person?.address?.street == "Santo Domingo"
     }).first();
 
@@ -258,6 +258,24 @@ test('test "pluck" method', () => {
     expect(persons.pluck('name').first()).toBe('rix');
     expect(persons.pluck('name', 'age').first().age).toBe(25);
     expect(persons.pluck('name', 'city').first().age).toBe(undefined);
+    expect(persons.pluck('name', 'unexistent').first().unexistent).toBe(undefined);
+})
+
+test('test "sortBy" method', () => {
+
+    let persons = new PersonCollection([{
+        'name': 'rix',
+        'age': 25,
+        'points': 100
+    }, {
+        'name': 'roger',
+        'age': 17,
+        'points': 200
+    }])
+
+    expect(persons.sortBy('age').first().name).toBe('roger')
+    expect(persons.sortBy('points', 'desc').first().name).toBe('roger')
+
 })
 
 test('test "unique" method', () => {
