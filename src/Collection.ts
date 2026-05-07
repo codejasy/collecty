@@ -362,7 +362,7 @@ export default class Collection extends Iterable {
      * }]
      */
     sortBy(field: string, order: 'asc' | 'desc' = 'asc'): Collection {
-        let newCollection = this.clone();
+        const newCollection = this.clone();
 
         const multiplier = order === 'desc' ? -1 : 1;
 
