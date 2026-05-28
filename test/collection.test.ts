@@ -91,6 +91,42 @@ test('test "first where" method', () => {
 
 });
 
+test('test "whereIn" method', () => {
+
+    let articles = new Collection([{
+        title: 'First article',
+    }, {
+        title: 'Second article',
+    }, {
+        title: 'Third article',
+    }])
+
+    let otherArticles = new Collection(['First article', 'Second article'])
+
+    const filteredArticles = articles.whereIn('title', otherArticles)
+
+    expect(filteredArticles.count()).toBe(2)
+
+})
+
+test('test "whereNotIn" method', () => {
+
+    let articles = new Collection([{
+        title: 'MIK-I: a portable low-cost platform for automated C–C bond synthesis',
+    }, {
+        title: 'Second article',
+    }, {
+        title: 'Third article',
+    }])
+
+    let otherArticles = new Collection(['Fourth article', 'MIK-I: a portable low-cost platform for automated C–C bond synthesis'])
+
+    const filteredArticles = articles.whereNotIn('title', otherArticles)
+
+    expect(filteredArticles.count()).toBe(2)
+
+})
+
 test('test "is array" method', () => {
 
     let collection = new Collection([])

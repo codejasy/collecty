@@ -419,9 +419,12 @@ export default class Collection extends Iterable {
         return this.filter((item: any) => getDeepValue(item, path) === value);
     }
 
-    public whereNotIn(property: string, values: any[]) {
+    public whereNotIn(property: string, values: any[] | Collection) {
+        // Convertir Collection a Array
+        const arrayValues: any[] = Array.from(values as any);
+
         return this.filter((entity) => {
-            return !values.includes(entity[property]);
+            return !arrayValues.includes(entity[property]);
         });
     }
 
@@ -431,9 +434,13 @@ export default class Collection extends Iterable {
         });
     }
 
-    public whereIn(property: string, values: any[]) {
+    public whereIn(property: string, values: any[] | Collection) {
+
+        // Convertir Collection a Array
+        const arrayValues: any[] = Array.from(values as any);
+
         return this.filter((entity) => {
-            return values.includes(entity[property]);
+            return arrayValues.includes(entity[property]);
         });
     }
 
