@@ -435,7 +435,6 @@ export default class Collection extends Iterable {
     }
 
     public whereIn(property: string, values: any[] | Collection) {
-
         // Convertir Collection a Array
         const arrayValues: any[] = Array.from(values as any);
 
