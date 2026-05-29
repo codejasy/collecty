@@ -107,6 +107,43 @@ test('test "whereIn" method', () => {
 
     expect(filteredArticles.count()).toBe(2)
 
+    let numbers = new Collection([{
+        item: 1
+    }, {
+        item: 2
+    }, {
+        item: 3
+    }])
+    let stringNumbers = new Collection([{
+        item: '1'
+    }, {
+        item: '2'
+    }, {
+        item: '3'
+    }])
+
+    const filteredNumbers = numbers.whereIn('item', stringNumbers.pluck('item'))
+
+    expect(filteredNumbers.count()).toBe(3)
+
+    let otherNumbers = new Collection([{
+        item: "one"
+    }, {
+        item: "two"
+    }, {
+        item: "three"
+    }])
+    let otherCasedNumbers = new Collection([{
+        item: "ONE"
+    }, {
+        item: "Two"
+    }, {
+        item: "ThRee "
+    }])
+
+    const filteredOtherNumbers = otherNumbers.whereIn('item', otherCasedNumbers.pluck('item'))
+
+    expect(filteredOtherNumbers.count()).toBe(2)
 })
 
 test('test "whereNotIn" method', () => {
@@ -124,6 +161,44 @@ test('test "whereNotIn" method', () => {
     const filteredArticles = articles.whereNotIn('title', otherArticles)
 
     expect(filteredArticles.count()).toBe(2)
+
+    let numbers = new Collection([{
+        item: 1
+    }, {
+        item: 2
+    }, {
+        item: 3
+    }])
+    let stringNumbers = new Collection([{
+        item: '1'
+    }, {
+        item: '4'
+    }, {
+        item: '5'
+    }])
+
+    const filteredNumbers = numbers.whereNotIn('item', stringNumbers.pluck('item'))
+
+    expect(filteredNumbers.count()).toBe(2)
+
+    let otherNumbers = new Collection([{
+        item: "one"
+    }, {
+        item: "two"
+    }, {
+        item: "three"
+    }])
+    let otherCasedNumbers = new Collection([{
+        item: "ONE"
+    }, {
+        item: "Two"
+    }, {
+        item: "ThRee "
+    }])
+
+    const filteredOtherNumbers = otherNumbers.whereNotIn('item', otherCasedNumbers.pluck('item'))
+
+    expect(filteredOtherNumbers.count()).toBe(1)
 
 })
 
