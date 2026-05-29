@@ -200,6 +200,20 @@ test('test "whereNotIn" method', () => {
 
     expect(filteredOtherNumbers.count()).toBe(1)
 
+    const newArticles = new Collection([{
+        title: 'Advanced chemibold: A ludic approach to identify functional groups in organic chemistry',
+    }, {
+        title: 'Organic solar cells based on PM6:Y7 and doped with boron-dipyrromethene (B1)'
+    }])
+
+    const otherNewArticles = new Collection([
+        'Organic solar cells based on PM6:Y7 and doped with boron-dipyrromethene (B1)',
+        'Advanced Chemibold: A Ludic Approach to Identify Functional Groups in Organic Chemistry'
+    ])
+
+    const filteredNewArticles = newArticles.whereNotIn('title', otherNewArticles)
+
+    expect(filteredNewArticles.count()).toBe(0)
 })
 
 test('test "is array" method', () => {
