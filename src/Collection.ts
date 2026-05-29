@@ -466,8 +466,6 @@ export default class Collection extends Iterable {
                         ? value[property] ?? value
                         : value;
 
-                console.log("✨", entityValue, normalize(compareValue));
-
                 return normalize(compareValue) === entityValue;
             });
         });
