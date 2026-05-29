@@ -420,22 +420,15 @@ export default class Collection extends Iterable {
     }
 
     public whereNotIn(property: string, values: any[] | Collection) {
-        const arrayValues =
-            values instanceof Array
-                ? values
-                : values.toArray?.() ?? Array.from(values as any);
+        const arrayValues = values instanceof Array ? values : values.toArray?.() ?? Array.from(values as any);
 
-        const normalize = (v: any) =>
-            String(v).toLowerCase();
+        const normalize = (v: any) => String(v).toLowerCase();
 
         return this.filter((entity) => {
             const entityValue = normalize(entity[property]);
 
-            return !arrayValues.some(value => {
-                const compareValue =
-                    value && typeof value === 'object'
-                        ? value[property] ?? value
-                        : value;
+            return !arrayValues.some((value) => {
+                const compareValue = value && typeof value === 'object' ? value[property] ?? value : value;
 
                 return normalize(compareValue) === entityValue;
             });
@@ -449,22 +442,15 @@ export default class Collection extends Iterable {
     }
 
     public whereIn(property: string, values: any[] | Collection) {
-        const arrayValues =
-            values instanceof Array
-                ? values
-                : values.toArray?.() ?? Array.from(values as any);
+        const arrayValues = values instanceof Array ? values : values.toArray?.() ?? Array.from(values as any);
 
-        const normalize = (v: any) =>
-            String(v).toLowerCase();
+        const normalize = (v: any) => String(v).toLowerCase();
 
         return this.filter((entity) => {
             const entityValue = normalize(entity[property]);
 
-            return arrayValues.some(value => {
-                const compareValue =
-                    value && typeof value === 'object'
-                        ? value[property] ?? value
-                        : value;
+            return arrayValues.some((value) => {
+                const compareValue = value && typeof value === 'object' ? value[property] ?? value : value;
 
                 return normalize(compareValue) === entityValue;
             });
