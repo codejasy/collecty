@@ -403,6 +403,34 @@ test('test "sortBy" method', () => {
 
 })
 
+test('test "sum" method', () => {
+
+    const collection = new Collection([
+        {
+            alumno: {
+                calificaciones: {
+                    promedio: 8.5
+                }
+            },
+            edad: 17
+        },
+        {
+            alumno: {
+                calificaciones: {
+                    promedio: 9.2
+                }
+            },
+            edad: 18
+        }
+    ]);
+
+    const promedio = collection.sum('alumno.calificaciones.promedio');
+
+    expect(promedio).toBe(17.7)
+    expect(collection.sum('edad')).toBe(35)
+
+})
+
 test('test "unique" method', () => {
     let persons = new PersonCollection([{
         'name': 'rix',

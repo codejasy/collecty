@@ -385,6 +385,19 @@ export default class Collection extends Iterable {
         return newCollection;
     }
 
+    sum(property: string): number {
+        const path = property.split('.');
+
+        const getDeepValue = (obj: any, path: string[]) =>
+            path.reduce((acc, key) => acc?.[key], obj);
+
+        return this.toArray().reduce((acc, item) => {
+            const value = getDeepValue(item, path);
+
+            return acc + (Number(value) || 0);
+        }, 0);
+    }
+
     /**
      * TODO: Document this
      */
