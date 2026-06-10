@@ -321,11 +321,17 @@ test('test "random" method', () => {
 test('test "where" method', () => {
     let persons = new PersonCollection([{
         'name': 'rix',
+        "publications": {
+            "approved": 14
+        },
         'address': {
             'street': 'Santo Domingo'
         }
     }, {
-        'name': 'roger'
+        'name': 'roger',
+        'publications': {
+            'approved': 12
+        }
     }])
 
     const person = persons.where("name", "rix").first()
@@ -340,11 +346,13 @@ test('test "where" method', () => {
 
     expect(person3).toBe(null)
 
-    const person4 = persons.where((person) => {
+    const person4 = persons.where((person: Person) => {
         return person?.address?.street == "Santo Domingo"
     }).first();
 
     expect(person4.name).toBe("rix")
+
+    expect(persons.where("publications.approved", ">=", 13).count()).toBe(1)
 })
 
 test('test "array" method', () => {

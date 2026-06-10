@@ -419,16 +419,57 @@ export default class Collection extends Iterable {
         return newCollection;
     }
 
-    public where(attributeOrCallback: string | ((item: any) => boolean), value?: any): Collection {
-        if (typeof attributeOrCallback === 'function') {
-            return this.filter(attributeOrCallback);
+    public where(...args: any[]): Collection {
+        // where(callback)
+        if (args.length === 1 && typeof args[0] === 'function') {
+            return this.filter(args[0]);
         }
 
-        const path = attributeOrCallback.split('.');
+        // where('campo', valor)
+        if (args.length === 2) {
+            const [attribute, value] = args;
 
-        const getDeepValue = (obj: any, path: string[]) => path.reduce((acc, key) => acc?.[key], obj);
+            return this.filter((item: any) => {
+                const itemValue = attribute
+                    .split('.')
+                    .reduce((acc: any, key: string) => acc?.[key], item);
 
-        return this.filter((item: any) => getDeepValue(item, path) === value);
+                return itemValue === value;
+            });
+        }
+
+        // where('field', operator, value)
+        if (args.length === 3) {
+            const [attribute, operator, value] = args;
+
+            return this.filter((item: any) => {
+                const itemValue = attribute
+                    .split('.')
+                    .reduce((acc: any, key: string) => acc?.[key], item);
+
+                switch (operator) {
+                    case '=':
+                    case '==':
+                        return itemValue == value;
+                    case '===':
+                        return itemValue === value;
+                    case '!=':
+                        return itemValue != value;
+                    case '>':
+                        return itemValue > value;
+                    case '>=':
+                        return itemValue >= value;
+                    case '<':
+                        return itemValue < value;
+                    case '<=':
+                        return itemValue <= value;
+                    default:
+                        throw new Error(`Operator "${operator}" not supported`);
+                }
+            });
+        }
+
+        throw new Error('Invalid arguments');
     }
 
     public whereNotIn(property: string, values: any[] | Collection) {
