@@ -449,19 +449,26 @@ export default class Collection extends Iterable {
 
                 switch (operator) {
                     case '=':
-                        return itemValue == value;
+                    case '==':
                     case '===':
                         return itemValue === value;
+
+                    case '!=':
                     case '!==':
-                        return itemValue != value;
+                        return itemValue !== value;
+
                     case '>':
                         return itemValue > value;
+
                     case '>=':
                         return itemValue >= value;
+
                     case '<':
                         return itemValue < value;
+
                     case '<=':
                         return itemValue <= value;
+
                     default:
                         throw new Error(`Operator "${operator}" not supported`);
                 }
