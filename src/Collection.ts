@@ -449,11 +449,10 @@ export default class Collection extends Iterable {
 
                 switch (operator) {
                     case '=':
-                    case '==':
                         return itemValue == value;
                     case '===':
                         return itemValue === value;
-                    case '!=':
+                    case '!==':
                         return itemValue != value;
                     case '>':
                         return itemValue > value;
