@@ -430,9 +430,7 @@ export default class Collection extends Iterable {
             const [attribute, value] = args;
 
             return this.filter((item: any) => {
-                const itemValue = attribute
-                    .split('.')
-                    .reduce((acc: any, key: string) => acc?.[key], item);
+                const itemValue = attribute.split('.').reduce((acc: any, key: string) => acc?.[key], item);
 
                 return itemValue === value;
             });
@@ -443,9 +441,7 @@ export default class Collection extends Iterable {
             const [attribute, operator, value] = args;
 
             return this.filter((item: any) => {
-                const itemValue = attribute
-                    .split('.')
-                    .reduce((acc: any, key: string) => acc?.[key], item);
+                const itemValue = attribute.split('.').reduce((acc: any, key: string) => acc?.[key], item);
 
                 switch (operator) {
                     case '=':
