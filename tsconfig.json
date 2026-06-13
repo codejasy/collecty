@@ -3,6 +3,7 @@
     "rootDir": "./src",
     "types": ["jest"],
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
     "target": "es2015",
     "lib": ["es2016", "dom"],
     "declaration": true,
