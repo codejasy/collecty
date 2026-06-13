@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "rootDir": "./src",
+    "types": ["jest"],
     "moduleResolution": "node",
     "target": "es2015",
     "lib": ["es2016", "dom"],
